@@ -1,0 +1,44 @@
+ .headbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+     
+    background-color: black;
+    color: white;
+ }
+
+ .buttonsofnav{
+    display: flex;
+     >a>h4{
+        
+        padding: 20px;
+     }
+      
+ }
+
+ .headbar:nth-child(1){
+    >img{
+        margin: 10px;
+    }
+     
+ }
+
+ .imagelogo{
+    padding: 20px;
+ }
+
+ .btnLogin{
+    border: 1px solid white;
+    border-radius: 10px;
+    width: 100px;
+    margin-right:10px ;
+ }
+
+ .btnSignup{
+    border: 1px solid white;
+    border-radius: 10px;
+    width: 100px;
+    background-color: rgba(48, 35, 35, 0.603);
+   
+ 
+ }
