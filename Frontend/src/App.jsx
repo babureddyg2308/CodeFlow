@@ -5,6 +5,7 @@ import './App.css'
 import Home from './pages/Home'
 import Header from './components/Header'
 // import Compiler from './pages/Compiler'
+import button from './components/ui/button'
  function App() {
    
 
@@ -12,10 +13,11 @@ import Header from './components/Header'
     <>
      <Header/>
        {/* <form/> */}
-       <Home/>
+       {/* <Home/> */}
        {/* <Compiler/> */}
  {/* <Header/> */}
- {/* <button/> */}
+ <button/>
+
     </>
   )
 }

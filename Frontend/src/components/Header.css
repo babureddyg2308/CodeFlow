@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-     
+     position: relative;
     background-color: black;
     color: white;
  }
@@ -11,7 +11,7 @@
     display: flex;
      >a>h4{
         
-        padding: 20px;
+        padding: 10px;
      }
       
  }
@@ -28,17 +28,20 @@
  }
 
  .btnLogin{
-    border: 1px solid white;
+    /* border: 1px solid white; */
     border-radius: 10px;
     width: 100px;
+    background-color:  hsl(16, 100%, 50%);
+
     margin-right:10px ;
  }
 
  .btnSignup{
-    border: 1px solid white;
+    /* border: 1px solid white; */
     border-radius: 10px;
     width: 100px;
-    background-color: rgba(48, 35, 35, 0.603);
+    margin-right: 10px;
+    background-color:  orangered;
    
  
  }
