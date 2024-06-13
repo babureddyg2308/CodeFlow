@@ -1,11 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import logo from '../../../public/image/logo.jpg';
 import Client from './Client';
-
+import { initSocket } from './socket';
+import {useLocation,useParams} from 'react-router-dom'
 const Editor = () => {
+
+    const socketRef=useRef(null);
+    const location=useLocation();
+    const {roomId}=useParams();
+    useEffect(()=>{
+        const init =async()=>
+            {
+                socketRef.current=await initSocket();
+                // socketRef.current.emit('join',{
+                //     roomId,
+                //     username:location.state?.username,
+                // })
+            }
+            init();
+    },[])
     const [clients, setClient] = useState([
         { socketId: 1, username: "Gaurav" },
-        { socketId: 2, username: "Akhil" } // Changed socketId to be unique
+        { socketId: 2, username: "Akhil" }, 
+        // Changed socketId to be unique
     ]);
 
     return (
