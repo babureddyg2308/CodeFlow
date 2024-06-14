@@ -1,36 +1,31 @@
-import React from "react";
 import "./pageStyles/grid.css";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Button } from "@/components/ui/button";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { Button } from "../components/ui/Button";
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from "../components/";
-import { Input } from "@/components/ui/input";
+} from "../components/ui/Form";
+import { Input } from "../components/ui/input";
 import { Link, useNavigate } from "react-router-dom";
-import { useLoginMutation } from "@/redux/slices/api";
-import { handleError } from "@/utils/handleError";
+import { useLoginMutation } from "../redux/slices/api";
+import { handleError } from "../utils/handleError";
 import { useDispatch } from "react-redux";
-import { updateCurrentUser, updateIsLoggedIn } from "@/redux/slices/appSlice";
+import { updateCurrentUser, updateIsLoggedIn } from "../redux/slices/appSlice";
 
-// Define the form schema using Zod
 const formSchema = z.object({
   userId: z.string(),
   password: z.string(),
 });
 
 export default function Login() {
-  // Use the login mutation hook from Redux
   const [login, { isLoading }] = useLoginMutation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  // Initialize the form using React Hook Form
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -39,7 +34,6 @@ export default function Login() {
     },
   });
 
-  // Handle the login form submission
   async function handleLogin(values) {
     try {
       const response = await login(values).unwrap();
@@ -54,7 +48,7 @@ export default function Login() {
   return (
     <div className="__login grid-bg w-full h-[calc(100dvh-60px)] flex justify-center items-center flex-col gap-3">
       <div className="__form_container bg-black border-[1px] py-8 px-4 flex flex-col gap-5 w-[300px]">
-        <div>
+        <div className="">
           <h1 className="font-mono text-4xl font-bold text-left">Login</h1>
           <p className="font-mono text-xs">Welcome back fellow coder 😁</p>
         </div>
