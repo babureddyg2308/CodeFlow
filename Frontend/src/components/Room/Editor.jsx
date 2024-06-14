@@ -1,21 +1,31 @@
 import React, { useEffect, useRef, useState } from 'react';
 import logo from '../../../public/image/logo.jpg';
 import Client from './Client';
-import { initSocket } from './socket';
-import {useLocation,useParams} from 'react-router-dom'
+import { initSocket } from '../../socket';
+import {useNavigate,useLocation,useParams, Navigate} from 'react-router-dom'
+import toast from 'react-hot-toast';
 const Editor = () => {
 
     const socketRef=useRef(null);
     const location=useLocation();
     const {roomId}=useParams();
+    const navigate=useNavigate
     useEffect(()=>{
         const init =async()=>
             {
                 socketRef.current=await initSocket();
-                // socketRef.current.emit('join',{
-                //     roomId,
-                //     username:location.state?.username,
-                // })
+                socketRef.current.on('connect_error',(err)=>handleError(err));
+                socketRef.current.on('connect_failed',(err)=>handleError(err));
+
+                const handleError=(e)=>{
+                    console.log('socket error=>',e);
+                    toast.error('Socket connection failed');
+                    navigate("/");
+                }
+                socketRef.current.emit('join',{
+                    roomId,
+                    username:location.state?.username,
+                })
             }
             init();
     },[])
@@ -24,7 +34,10 @@ const Editor = () => {
         { socketId: 2, username: "Akhil" }, 
         // Changed socketId to be unique
     ]);
-
+    if(!location.state)
+        {
+            return <Navigate to ="/"/>
+        }
     return (
         <div className='container-fluid vh-100'>
             <div className="row h-100">
