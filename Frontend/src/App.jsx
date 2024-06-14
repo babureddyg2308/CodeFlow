@@ -1,35 +1,97 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// import { useState } from 'react'
+// // import { form } from './components/form'
+
+// import './App.css'
+// import Home from './pages/Home'
+// import Header from './components/Header'
+// // import Compiler from './pages/Compiler'
+// // import Button from './components/ui/button'
+// // import { Avatar } from '@radix-ui/react-avatar'
+// import { Avatar } from './components/ui/Avatar'
+// // import Sheet from './components/ui/Sheet'
+// // import {Input} from './components/ui/input'
+// import Resizable from './components/ui/Resizable'
+// import { Separator } from '@radix-ui/react-separator'
+//  import Loader from './components/Loader/Loader'
+// import CodeEditor from './components/CodeEditor'
+// import CodeItem from './components/CodeItem'
+// import HelperHeader from './components/HelperHeader'
+// import RenderCode from './components/RenderCode'
+// import { ThemeProvider } from './components/theme-provider'
+// import { Button } from './components/ui/Button'
+// import { Input } from './components/ui/Input'
+// // import Input from 'postcss/lib/input'
+// // import Input from 'postcss/lib/input'
+// // import { Input } from 'postcss'
+//  function App() {
+   
+
+//   return (
+//     <>
+//      <Header/>
+//      {/* <Input/> */}
+//        {/* <form/> */}
+//        {/* <Home/> */}
+//        {/* <Compiler/> */}
+//  {/* <Header/> */}
+//  {/* <Button/> */}
+//  {/* <Avatar/> */}
+// {/* <button/> */}
+//  {/* <Sheet/> */}
+//  {/* <dialog/> */}
+
+//  {/* <input/> */}
+//  {/* <label/> */}
+//  {/* <resizable/> */}
+
+//  {/* < select/>
+// <separator/>
+// <sonner/> */}
+// {/* 
+// <Loader/>
+// <CodeEditor/>
+// <CodeItem/>
+// <HelperHeader/>
+// <RenderCode/>
+// <ThemeProvider/> */}
+//     </>
+//   )
+// }
+
+// export default App
+
+import Header from "./components/Header";
+import { ThemeProvider } from "./components/theme-provider";
+import { Toaster } from "sonner";
+import { useEffect } from "react";
+import { useGetUserDetailsQuery } from "./redux/slices/api";
+import { useDispatch } from "react-redux";
+import { updateCurrentUser, updateIsLoggedIn } from "./redux/slices/appSlice";
+import AllRoutes from "./AllRoutes";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { data, error } = useGetUserDetailsQuery();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (data) {
+      dispatch(updateCurrentUser(data));
+      dispatch(updateIsLoggedIn(true));
+    } else if (error) {
+      dispatch(updateCurrentUser({}));
+      dispatch(updateIsLoggedIn(false));
+    }
+  }, [data, error]);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Toaster position="bottom-right" theme="dark" />
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <Header />
+        <AllRoutes />
+      </ThemeProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
