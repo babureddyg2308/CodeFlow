@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateCodeValue } from "../redux/slices/compilerSlice";
                                   
 // import { RootState } from "@/redux/store";
-import { RootState } from "../redux/store";
+// import { RootState } from "../redux/store";
 
 
 export default function CodeEditor() {

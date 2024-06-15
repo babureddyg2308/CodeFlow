@@ -41,7 +41,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/Avatar";
 import { updateIsOwner } from "../redux/slices/compilerSlice";
 import { useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { Sheet, SheetContent, SheetTrigger } from "../components/ui/Sheet";
+import { Sheet, SheetContent, SheetTrigger } from "./ui/Sheet";
 
 export default function Header() {
   const [logout, { isLoading }] = useLogoutMutation();
