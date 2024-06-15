@@ -2,7 +2,7 @@ import "./pageStyles/grid.css";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Button } from "../components/ui/Button";
+import { Button } from "../components/ui/button";
 import {
   Form,
   FormControl,
@@ -10,7 +10,7 @@ import {
   FormItem,
   FormMessage,
 } from "../components/ui/Form";
-import { Input } from "../components/ui/Input";
+import { Input } from "../components/ui/input";
 import { Link, useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../redux/slices/api";
 import { handleError } from "../utils/handleError";
@@ -49,11 +49,11 @@ export default function Login() {
     <div className="__login grid-bg w-full h-[calc(100dvh-60px)] flex justify-center items-center flex-col gap-3">
       <div className="__form_container bg-black border-[1px] py-8 px-4 flex flex-col gap-5 w-[300px]">
         <div className="">
-          <h1 className="font-mono text-4xl font-bold text-left">Login</h1>
-          <p className="font-mono text-xs">Welcome back fellow coder 😁</p>
+          <h1 className="font-mono text-4xl font-bold text-left" style={{color:'white'}}>Login</h1>
+          <p className="font-mono text-xs" style={{color:'white'}}>Welcome back fellow coder 😁</p>
         </div>
         <Form {...form}>
-          <form
+          <form style={{color:'white'}}
             onSubmit={form.handleSubmit(handleLogin)}
             className="flex flex-col gap-2"
           >
@@ -97,7 +97,7 @@ export default function Login() {
             </Button>
           </form>
         </Form>
-        <small className="text-xs font-mono">
+        <small className="text-xs font-mono" style={{color:'white'}}>
           Don't have an account?{" "}
           <Link className=" text-blue-500" to="/signup">
             Signup

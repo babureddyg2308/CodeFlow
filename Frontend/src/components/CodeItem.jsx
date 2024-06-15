@@ -1,7 +1,7 @@
 import { Code, Trash2 } from "lucide-react";
 import Separator from "./ui/Separator"; // Adjust the path as per your project structure
 
- import {Button} from './ui/Button'
+ import {Button} from './ui/button'
 import { Link } from "react-router-dom";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/Dialog";
 import { handleError } from "../utils/handleError";

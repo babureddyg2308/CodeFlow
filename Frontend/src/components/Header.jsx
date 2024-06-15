@@ -28,7 +28,7 @@
 
 
 import { Link } from "react-router-dom";
-import { Button } from "./ui/Button";
+import { Button } from "./ui/button";
 import { useDispatch, useSelector } from "react-redux";
 import { handleError } from "../utils/handleError";
 import { useLogoutMutation } from "../redux/slices/api";
@@ -37,11 +37,13 @@ import {
   updateCurrentUser,
   updateIsLoggedIn,
 } from "../redux/slices/appSlice";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/Avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { updateIsOwner } from "../redux/slices/compilerSlice";
 import { useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/Sheet";
+import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+
+import logo from '../../public/ImageLogo/NEM104-logo.png'
 
 export default function Header() {
   const [logout, { isLoading }] = useLogoutMutation();
@@ -81,7 +83,7 @@ export default function Header() {
   return (
     <nav className="w-full h-[60px] bg-gray-900 text-white p-3 flex justify-between items-center">
       <Link to="/">
-        <h2 className="font-bold select-none">WD Compiler</h2>
+        <h2 className="font-bold select-none"><img src={logo} alt="" style={{width:90}}/></h2>
       </Link>
       {windowWidth > 500 ? (
         <ul className="flex gap-2">
