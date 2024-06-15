@@ -5,12 +5,12 @@ import { cva } from "class-variance-authority"; // Assuming type VariantProps is
 
 import { cn } from "../../lib/utils"; // Adjust the path to utils accordingly
 
-const Sheet = SheetPrimitive.Root;
-const SheetTrigger = SheetPrimitive.Trigger;
-const SheetClose = SheetPrimitive.Close;
-const SheetPortal = SheetPrimitive.Portal;
+export const Sheet = SheetPrimitive.Root;
+export const SheetTrigger = SheetPrimitive.Trigger;
+export const SheetClose = SheetPrimitive.Close;
+export const SheetPortal = SheetPrimitive.Portal;
 
-const SheetOverlay = React.forwardRef(
+export const SheetOverlay = React.forwardRef(
   ({ className, ...props }, ref) => (
     <SheetPrimitive.Overlay
       className={cn(
@@ -24,7 +24,7 @@ const SheetOverlay = React.forwardRef(
 );
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName;
 
-const sheetVariants = cva(
+export const sheetVariants = cva(
   "fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
   {
     variants: {
@@ -43,7 +43,7 @@ const sheetVariants = cva(
   }
 );
 
-const SheetContent = React.forwardRef(
+export const SheetContent = React.forwardRef(
   ({ side = "right", className, children, ...props }, ref) => (
     <SheetPortal>
       <SheetOverlay />
@@ -63,7 +63,7 @@ const SheetContent = React.forwardRef(
 );
 SheetContent.displayName = SheetPrimitive.Content.displayName;
 
-const SheetHeader = ({ className, ...props }) => (
+export const SheetHeader = ({ className, ...props }) => (
   <div
     className={cn(
       "flex flex-col space-y-2 text-center sm:text-left",
@@ -74,7 +74,7 @@ const SheetHeader = ({ className, ...props }) => (
 );
 SheetHeader.displayName = "SheetHeader";
 
-const SheetFooter = ({ className, ...props }) => (
+export const SheetFooter = ({ className, ...props }) => (
   <div
     className={cn(
       "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
@@ -85,7 +85,7 @@ const SheetFooter = ({ className, ...props }) => (
 );
 SheetFooter.displayName = "SheetFooter";
 
-const SheetTitle = React.forwardRef(
+export const SheetTitle = React.forwardRef(
   ({ className, ...props }, ref) => (
     <SheetPrimitive.Title
       ref={ref}
@@ -96,7 +96,7 @@ const SheetTitle = React.forwardRef(
 );
 SheetTitle.displayName = SheetPrimitive.Title.displayName;
 
-const SheetDescription = React.forwardRef(
+export const SheetDescription = React.forwardRef(
   ({ className, ...props }, ref) => (
     <SheetPrimitive.Description
       ref={ref}
@@ -107,15 +107,15 @@ const SheetDescription = React.forwardRef(
 );
 SheetDescription.displayName = SheetPrimitive.Description.displayName;
 
-export default{
-  Sheet,
-  SheetPortal,
-  SheetOverlay,
-  SheetTrigger,
-  SheetClose,
-  SheetContent,
-  SheetHeader,
-  SheetFooter,
-  SheetTitle,
-  SheetDescription,
-};
+// export default{
+//   Sheet,
+//   SheetPortal,
+//   SheetOverlay,
+//   SheetTrigger,
+//   SheetClose,
+//   SheetContent,
+//   SheetHeader,
+//   SheetFooter,
+//   SheetTitle,
+//   SheetDescription,
+// };

@@ -61,13 +61,14 @@
 // export default App
 
 import Header from "./components/Header";
-import { ThemeProvider } from "./components/theme-provider";
+// import { ThemeProvider } from "./components/theme-provider";
 import { Toaster } from "sonner";
 import { useEffect } from "react";
 import { useGetUserDetailsQuery } from "./redux/slices/api";
 import { useDispatch } from "react-redux";
 import { updateCurrentUser, updateIsLoggedIn } from "./redux/slices/appSlice";
 import AllRoutes from "./AllRoutes";
+import { ThemeProvider } from "./components/theme-provider";
 
 function App() {
   const { data, error } = useGetUserDetailsQuery();
