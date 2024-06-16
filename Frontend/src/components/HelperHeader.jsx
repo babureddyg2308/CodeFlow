@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Code, Copy, Download, PencilLine, Save, Share2 } from "lucide-react";
-import { Button } from "./ui/Button";
+import { Button } from "./ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger } from "./ui/Select";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCurrentLanguage } from "../redux/slices/compilerSlice";
@@ -10,7 +10,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/Dialog";
 import { toast } from "sonner";
 import { useEditCodeMutation, useSaveCodeMutation } from "../redux/slices/api";
-import { Input } from "./ui/Input";
+import { Input } from "./ui/input";
 import { SelectValue } from "@radix-ui/react-select";
 
 export default function HelperHeader() {
