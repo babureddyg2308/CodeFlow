@@ -1,8 +1,7 @@
  
 
 import Header from "./components/Header";
-// import { ThemeProvider } from "./components/theme-provider";
-import { Toaster } from "sonner";
+ import { Toaster } from "sonner";
 import { useEffect } from "react";
 import { useGetUserDetailsQuery } from "./redux/slices/api";
 import { useDispatch } from "react-redux";
