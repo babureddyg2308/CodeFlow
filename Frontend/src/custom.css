@@ -1,0 +1,14 @@
+/* custom.css */
+.custom-header .btn-link {
+    color: white !important;
+}
+
+.custom-header a {
+    color: white !important;
+    text-decoration: none;
+}
+
+.custom-header a:hover {
+    color: white !important;
+    text-decoration: underline;
+}

@@ -1,31 +1,4 @@
-// import React from 'react'
-//  import{Link} from 'react-router-dom'
-//  import'./Header.css'
-
-//  import Logoimg from '../../public/ImageLogo/NEM104-logo.png'
-
-// const Header = () => {
-//     return (
-//         <div>
-//           <div className='headbar'>
-//             <div>
-                 
-//                  <img  className='imagelogo' src={Logoimg} alt="" style={{width:150}}/>
-//             </div>
-//             <div className='buttonsofnav'>
-//                <a href=""> <h4>Compailer</h4></a>
-//                <a href=""> <h4>All Codes</h4> </a>
-//                 <button className='btnLogin'>Login</button>
-//                 <button className='btnSignup'>Signup</button>
-
-//             </div>
-//           </div>
-//         </div>
-//     )
-// }
-
-// export default Header
-
+ 
 
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
@@ -44,6 +17,8 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
 import logo from '../../public/ImageLogo/NEM104-logo.png'
+import '../custom.css';
+ 
 
 export default function Header() {
   const [logout, { isLoading }] = useLogoutMutation();
@@ -81,15 +56,20 @@ export default function Header() {
   };
 
   return (
-    <nav className="w-full h-[60px] bg-gray-900 text-white p-3 flex justify-between items-center">
+    <nav className="w-full h-[60px] bg-gray-900 text-white p-3 flex justify-between items-center ">
       <Link to="/">
-        <h2 className="font-bold select-none"><img src={logo} alt="" style={{width:90}}/></h2>
+        <h2 className="font-bold select-none text-white"><img src={logo} alt="" style={{width:90}}/></h2>
       </Link>
       {windowWidth > 500 ? (
-        <ul className="flex gap-2">
+        <ul className="flex gap-2 text-white ">
           <li>
             <Link to="/compiler">
-              <Button variant="link">Compiler</Button>
+            <Button variant="link" style={{ color: 'white' }}>Compiler</Button>
+            </Link>
+          </li>
+          <li>
+            <Link to="/room">
+              <Button variant="link">Room</Button>
             </Link>
           </li>
           <li>
@@ -138,7 +118,7 @@ export default function Header() {
           )}
         </ul>
       ) : (
-        <div className="flex gap-2 justify-center items-center">
+        <div className="flex gap-2 justify-center items-center text-white ">
           <Avatar>
             <AvatarImage src={currentUser.picture} />
             <AvatarFallback className="capitalize">

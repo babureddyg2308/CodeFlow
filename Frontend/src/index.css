@@ -79,6 +79,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'codemirror/lib/codemirror.css';
+@import 'codemirror/theme/dracula.css';
+
 @layer base {
   :root {
     --background: 0 0% 100%;

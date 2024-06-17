@@ -1,6 +1,8 @@
 import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import Loader from "./components/Loader/Loader";
+// import Room from "./Room";
+// import HomeRoom from "./components/EditorPage";
 
 const Home = lazy(() => import("./pages/Home"));
 const Login = lazy(() => import("./pages/Login"));
@@ -9,6 +11,9 @@ const Compiler = lazy(() => import("./pages/Compiler"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const AllCodes = lazy(() => import("./pages/AllCodes"));
 const MyCodes = lazy(() => import("./pages/MyCodes"));
+// const Room = lazy(()=> import("./Room"))
+const HomeRoom = lazy(() => import("./components/HomeRoom"));
+const EditorPage = lazy(() => import("./components/EditorPage"));
 
 export default function AllRoutes() {
   return (
@@ -27,6 +32,9 @@ export default function AllRoutes() {
         <Route path="/my-codes" element={<MyCodes />} />
         <Route path="/compiler/:urlId?" element={<Compiler />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/room" element={<HomeRoom />} />
+        <Route path="/editor/:roomId" element={<EditorPage/>} />
+        {/* <Route path="/room" element={<Room/>}/> */}
       </Routes>
     </Suspense>
   );
