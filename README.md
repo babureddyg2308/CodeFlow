@@ -29,12 +29,12 @@ This project was created to put into practice the coding and problem-solving ski
 
 # Video Walkthrough of the Project
 
-- A YouTube video explaining the entire project and showcasing the features and functionalities can be accessed here:[]
+- A YouTube video explaining the entire project and showcasing the features and functionalities can be accessed here:[https://www.youtube.com/watch?v=g_7OmOx2uto]
 
 ## Video Walkthrough of the CodeBase
 
 
-- A walkthrough of the codebase and the folder structure can be accessed here on YouTube:[]
+- A walkthrough of the codebase and the folder structure can be accessed here on YouTube:[https://www.youtube.com/watch?v=HqUlMu0tg0k]
 
 
 
