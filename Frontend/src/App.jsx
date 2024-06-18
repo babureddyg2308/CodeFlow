@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { updateCurrentUser, updateIsLoggedIn } from "./redux/slices/appSlice";
 import AllRoutes from "./AllRoutes";
 import { ThemeProvider } from "./components/theme-provider";
-
+import './App.css'
 function App() {
   const { data, error } = useGetUserDetailsQuery();
   const dispatch = useDispatch();

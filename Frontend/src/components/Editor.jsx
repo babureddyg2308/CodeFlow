@@ -3,8 +3,8 @@
 // import "codemirror/theme/dracula.css";
 // import "codemirror/mode/javascript/javascript";
 // import "codemirror/addon/edit/closetag";
-// import "codemirror/addon/edit/closebrackets"
-// import CodeMirror from "codemirror";
+// import  "codemirror/addon/edit/closebrackets"
+// import {CodeMirror} from "codemirror";
 // import { ACTIONS } from "../Actions";  
 
 // function Editor({ socketRef, roomId, onCodeChange }) {
@@ -70,103 +70,92 @@
 
 
 
-// import React, { useEffect, useRef } from 'react';
-// import MonacoEditor from 'react-monaco-editor';
-// import { ACTIONS } from '../Actions';
 
-// function Editor({ socketRef, roomId, onCodeChange }) {
-//   const editorRef = useRef(null);
+import React, { useEffect, useRef, useState } from 'react';
+import MonacoEditor from 'react-monaco-editor';
+import { ACTIONS } from '../Actions';
 
-//   useEffect(() => {
-//     if (!socketRef.current) return;
+function Editor({ socketRef, roomId, onCodeChange }) {
+  const editorRef = useRef(null);
+  const [language, setLanguage] = useState('javascript');
+  const [output, setOutput] = useState('');
 
-//     const handleCodeChange = ({ code }) => {
-//       if (code !== null && editorRef.current && editorRef.current.getValue() !== code) {
-//         editorRef.current.setValue(code);
-//       }
-//     };
+  useEffect(() => {
+    if (!socketRef.current) return;
 
-//     socketRef.current.on(ACTIONS.CODE_CHANGE, handleCodeChange);
+    const handleCodeChange = ({ code }) => {
+      if (code !== null && editorRef.current && editorRef.current.getValue() !== code) {
+        editorRef.current.setValue(code);
+      }
+    };
 
-//     return () => {
-//       socketRef.current.off(ACTIONS.CODE_CHANGE, handleCodeChange);
-//     };
-//   }, [socketRef, roomId]);
+    socketRef.current.on(ACTIONS.CODE_CHANGE, handleCodeChange);
 
-//   const editorDidMount = (editor, monaco) => {
-//     editorRef.current = editor;
-//     editor.onDidChangeModelContent(() => {
-//       const value = editor.getValue();
-//       onCodeChange(value);
-//       socketRef.current.emit(ACTIONS.CODE_CHANGE, {
-//         roomId,
-//         code: value,
-//       });
-//     });
-//   };
+    return () => {
+      socketRef.current.off(ACTIONS.CODE_CHANGE, handleCodeChange);
+    };
+  }, [socketRef]);
 
-//   return (
-//     <MonacoEditor
-//       width="900px"
-//       height="600px"
-//       language="javascript"
-//       theme="vs-dark"
-//       editorDidMount={editorDidMount}
-//       options={{
-//         automaticLayout: true,
-//         minimap: {
-//           enabled: false,
-//         },
-//       }}
-//     />
-//   );
-// }
+  const editorDidMount = (editor, monaco) => {
+    editorRef.current = editor;
+    editor.onDidChangeModelContent(() => {
+      const value = editor.getValue();
+      onCodeChange(value);
+      socketRef.current.emit(ACTIONS.CODE_CHANGE, {
+        roomId,
+        code: value,
+        language,
+      });
 
-// export default Editor;
+      // Evaluate JavaScript code and display output
+      if (language === 'javascript') {
+        try {
+          let capturedOutput = '';
+          const originalConsoleLog = console.log;
+          console.log = (...args) => {
+            capturedOutput += args.join(' ') + '\n';
+            originalConsoleLog(...args);
+          };
+          const result = eval(value);
+          console.log = originalConsoleLog; // Restore original console.log
+          setOutput(capturedOutput || (result !== undefined ? result.toString() : 'undefined'));
+        } catch (error) {
+          setOutput(error.message);
+        }
+      }
+    });
+  };
 
-// import React, { useEffect, useRef } from "react";
-// import Editor from "@monaco-editor/react";
-// import { ACTIONS } from "../Actions";
+  const handleLanguageChange = (event) => {
+    setLanguage(event.target.value);
+  };
 
-// function CodeEditor({ socketRef, roomId, onCodeChange }) {
-//   const editorRef = useRef(null);
+  return (
+    <div style={{ backgroundColor: "gray" }}>
+      <select value={language} onChange={handleLanguageChange} style={{ backgroundColor: "#2563EB", color:"white"}}>
+        <option value="html">HTML</option>
+        <option value="css">CSS</option>
+        <option value="javascript">JavaScript</option>
+      </select>
+      <MonacoEditor
+        width="100vw"
+        height="505px"
+        language={language}
+        theme="vs-dark"
+        editorDidMount={editorDidMount}
+        options={{
+          automaticLayout: true,
+          minimap: {
+            enabled: false,
+          },
+        }}
+      />
+      <div style={{ height: '200px', overflow: 'auto', padding: '10px', border: '1px solid #ccc', backgroundColor: "gray" ,color:"white"}}>
+        <h4>Output:</h4>
+        <pre>{output}</pre>
+      </div>
+    </div>
+  );
+}
 
-//   useEffect(() => {
-//     if (socketRef.current) {
-//       socketRef.current.on(ACTIONS.CODE_CHANGE, ({ code }) => {
-//         if (code !== null && editorRef.current.getValue() !== code) {
-//           editorRef.current.setValue(code);
-//         }
-//       });
-//     }
-//     return () => {
-//       socketRef.current.off(ACTIONS.CODE_CHANGE);
-//     };
-//   }, [socketRef]);
-
-//   const handleEditorDidMount = (editor, monaco) => {
-//     editorRef.current = editor;
-    
-//     editor.onDidChangeModelContent((event) => {
-//       const code = editor.getValue();
-//       onCodeChange(code);
-//       socketRef.current.emit(ACTIONS.CODE_CHANGE, {
-//         roomId,
-//         code,
-//       });
-//     });
-//   };
-
-//   return (
-//     <div style={{ height: "600px" }}>
-//       <Editor
-//         height="100%"
-//         language="javascript"
-//         theme="vs-dark"
-//         onMount={handleEditorDidMount}
-//       />
-//     </div>
-//   );
-// }
-
-// export default CodeEditor;
+export default Editor;

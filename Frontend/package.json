@@ -36,6 +36,7 @@
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
     "codemirror": "^6.0.1",
+    "eact": "^0.0.1-security",
     "lucide-react": "^0.395.0",
     "monaco-editor": "^0.44.0",
     "next-themes": "^0.3.0",
