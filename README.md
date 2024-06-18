@@ -25,78 +25,7 @@ This project was created to put into practice the coding and problem-solving ski
 
 # Drectory Structure
 
-CodeFlow
-├── Backend
-│ ├── src
-│ │ ├── controllers
-│ │ │ ├── compilerController.js
-│ │ │ ├── cppCompilerController.js
-│ │ │ └── userController.js
-│ │ ├── lib
-│ │ │ └── dbConnect.js
-│ │ ├── middlewares
-│ │ │ ├── verifyToken.js
-│ │ │ └── verifyTokenAnonymous.js
-│ │ ├── Models
-│ │ │ ├── Code.js
-│ │ │ └── User.js
-│ │ ├── routes
-│ │ │ ├── compilerRouter.js
-│ │ │ └── userRouter.js
-│ │ ├── types
-│ │ │ └── compilerTypes.js
-│ │ └── index.js
-├── Frontend
-│ ├── public
-│ │ └── ImagesLogo
-│ ├── src
-│ │ ├── components
-│ │ │ ├── Loader
-│ │ │ ├── ui
-│ │ │ ├── Client.jsx
-│ │ │ ├── CodeItem.jsx
-│ │ │ ├── Editor.jsx
-│ │ │ ├── EditorPage.jsx
-│ │ │ ├── Header.jsx
-│ │ │ ├── HelperHeader.jsx
-│ │ │ ├── HomeRoom.jsx
-│ │ │ ├── RenderCode.jsx
-│ │ │ └── CodeEditor.jsx
-│ │ ├── lib
-│ │ │ └── utils.js
-│ │ ├── pages
-│ │ │ ├── PageStyles
-│ │ │ ├── Allcodes.jsx
-│ │ │ ├── Compailer.jsx
-│ │ │ ├── Home.jsx
-│ │ │ ├── Login.jsx
-│ │ │ ├── Mycodes.jsx
-│ │ │ ├── NotFound.jsx
-│ │ │ └── Signup.jsx
-│ │ ├── redux
-│ │ │ ├── slice
-│ │ │ │ ├── api.js
-│ │ │ │ ├── appSlice.js
-│ │ │ │ └── compailerSlice.js
-│ │ │ └── store.js
-│ │ ├── utils
-│ │ │ └── api.js
-│ │ ├── Action.js
-│ │ ├── AllRoutes.jsx
-│ │ ├── App.jsx
-│ │ ├── App.test.jsx
-│ │ ├── main.jsx
-│ │ ├── Room.jsx
-│ │ ├── setupTests.js
-│ │ ├── Socket.jsx
-│ │ ├── vite-env.d.json
-│ │ ├── .gitignore
-│ │ ├── components.json
-│ │ ├── index.html
-│ │ ├── vercel.json
-│ │ ├── vite.config.js
-│ │ └── tailwind.config.js
-└── README.md
+ ![Screenshot 2024-06-18 215033](https://github.com/babureddyg2308/CodeFlow/assets/158761114/c084230b-af2f-4b55-86da-0a1cffbfb403)
 
 # Video Walkthrough of the Project
 
