@@ -17,7 +17,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
 import logo from '../../public/ImageLogo/NEM104-logo.png'
-import '../custom.css';
+// import '../custom.css';
  
 
 export default function Header() {
@@ -79,11 +79,13 @@ export default function Header() {
           </li>
           {isLoggedIn ? (
             <>
+
               <li>
-                <Link to="/my-codes">
+                <Link to="/all-codes">
                   <Button variant="blue">My Codes</Button>
                 </Link>
               </li>
+               
               <li>
                 <Button
                   loading={isLoading}
