@@ -69,10 +69,8 @@
 // export default Editor;
 
 
-
-
 import React, { useEffect, useRef, useState } from 'react';
-import MonacoEditor from 'react-monaco-editor';
+import MonacoEditor from '@monaco-editor/react';
 import { ACTIONS } from '../Actions';
 
 function Editor({ socketRef, roomId, onCodeChange }) {
@@ -131,8 +129,8 @@ function Editor({ socketRef, roomId, onCodeChange }) {
   };
 
   return (
-    <div style={{ backgroundColor: "gray" }}>
-      <select value={language} onChange={handleLanguageChange} style={{ backgroundColor: "#2563EB", color:"white"}}>
+    <div style={{ backgroundColor: 'gray' }}>
+      <select value={language} onChange={handleLanguageChange} style={{ backgroundColor: '#2563EB', color: 'white' }}>
         <option value="html">HTML</option>
         <option value="css">CSS</option>
         <option value="javascript">JavaScript</option>
@@ -150,7 +148,7 @@ function Editor({ socketRef, roomId, onCodeChange }) {
           },
         }}
       />
-      <div style={{ height: '200px', overflow: 'auto', padding: '10px', border: '1px solid #ccc', backgroundColor: "gray" ,color:"white"}}>
+      <div style={{ height: '200px', overflow: 'auto', padding: '10px', border: '1px solid #ccc', backgroundColor: 'gray', color: 'white' }}>
         <h4>Output:</h4>
         <pre>{output}</pre>
       </div>
