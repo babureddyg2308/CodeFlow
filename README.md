@@ -62,7 +62,7 @@ Sure! Here are four features of CodeFlow:
 ## Usage
 
 + Regular Functionalities:
-   Get started on the landing page where you can see the Navbar with logo and login.
+   Get started on the landing page where you can see the Navbar with logo and login/Signup page.
  
 ![Screenshot 2024-06-18 200844](https://github.com/babureddyg2308/CodeFlow/assets/158761114/b5ae7003-fb7c-44b7-83d5-a14723cbbb60)
 
