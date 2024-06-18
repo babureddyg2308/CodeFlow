@@ -68,7 +68,6 @@
 
 // export default Editor;
 
-
 import React, { useEffect, useRef, useState } from 'react';
 import MonacoEditor from '@monaco-editor/react';
 import { ACTIONS } from '../Actions';
@@ -94,34 +93,30 @@ function Editor({ socketRef, roomId, onCodeChange }) {
     };
   }, [socketRef]);
 
-  const editorDidMount = (editor, monaco) => {
-    editorRef.current = editor;
-    editor.onDidChangeModelContent(() => {
-      const value = editor.getValue();
-      onCodeChange(value);
-      socketRef.current.emit(ACTIONS.CODE_CHANGE, {
-        roomId,
-        code: value,
-        language,
-      });
-
-      // Evaluate JavaScript code and display output
-      if (language === 'javascript') {
-        try {
-          let capturedOutput = '';
-          const originalConsoleLog = console.log;
-          console.log = (...args) => {
-            capturedOutput += args.join(' ') + '\n';
-            originalConsoleLog(...args);
-          };
-          const result = eval(value);
-          console.log = originalConsoleLog; // Restore original console.log
-          setOutput(capturedOutput || (result !== undefined ? result.toString() : 'undefined'));
-        } catch (error) {
-          setOutput(error.message);
-        }
-      }
+  const handleEditorChange = (value) => {
+    onCodeChange(value);
+    socketRef.current.emit(ACTIONS.CODE_CHANGE, {
+      roomId,
+      code: value,
+      language,
     });
+
+    // Evaluate JavaScript code and display output
+    if (language === 'javascript') {
+      try {
+        let capturedOutput = '';
+        const originalConsoleLog = console.log;
+        console.log = (...args) => {
+          capturedOutput += args.join(' ') + '\n';
+          originalConsoleLog(...args);
+        };
+        const result = eval(value);
+        console.log = originalConsoleLog; // Restore original console.log
+        setOutput(capturedOutput || (result !== undefined ? result.toString() : 'undefined'));
+      } catch (error) {
+        setOutput(error.message);
+      }
+    }
   };
 
   const handleLanguageChange = (event) => {
@@ -140,7 +135,10 @@ function Editor({ socketRef, roomId, onCodeChange }) {
         height="505px"
         language={language}
         theme="vs-dark"
-        editorDidMount={editorDidMount}
+        onMount={(editor, monaco) => {
+          editorRef.current = editor;
+          editor.onDidChangeModelContent(() => handleEditorChange(editor.getValue()));
+        }}
         options={{
           automaticLayout: true,
           minimap: {

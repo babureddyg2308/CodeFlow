@@ -13,7 +13,7 @@ export default function AllCodes() {
       })}
     </div>
   ) : (
-    <p className="block w-full text-slate-500 font-mono text-center p-3">
+    <p className="text-block w-full text-slate-500 font-mono text-center p-3">
       No Codes Found!
     </p>
   );
