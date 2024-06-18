@@ -14,7 +14,7 @@ The project is a full-stack application that includes both frontend and backend 
 
 Both the front-end and Backend server have been deployed using render.com. The deployed links can be accessed below.
 
-*Frontend: [https://code-flow-sigma.vercel.app/] *Backend: [https://codeflow-ujkh.onrender.com]
+*Frontend: [https://code-flow-woy3.vercel.app/] *Backend: [https://codeflow-ujkh.onrender.com]
 
 
 # Objective
